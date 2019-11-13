@@ -154,7 +154,7 @@ class ECKey
         }
     }
 
-    private static function getXAndY(ASNObject $children, ?string &$x, ?string &$y)
+    private static function getXAndY(ASNObject $children, string &$x, string &$y)
     {
         if (!$children instanceof ExplicitlyTaggedObject || !\is_array($children->getContent())) {
             throw new \InvalidArgumentException('Unable to load the key.');

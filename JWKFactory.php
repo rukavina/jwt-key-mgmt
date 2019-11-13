@@ -223,7 +223,7 @@ class JWKFactory
      *
      * @throws \Exception
      */
-    public static function createFromPKCS12CertificateFile(string $file, ?string $secret = '', array $additional_values = []): JWK
+    public static function createFromPKCS12CertificateFile(string $file, string $secret = '', array $additional_values = []): JWK
     {
         $res = \openssl_pkcs12_read(\file_get_contents($file), $certs, $secret);
         if (false === $res || !\is_array($certs) || !\array_key_exists('pkey', $certs)) {
@@ -265,7 +265,7 @@ class JWKFactory
      *
      * @throws \Exception
      */
-    public static function createFromKeyFile(string $file, ?string $password = null, array $additional_values = []): JWK
+    public static function createFromKeyFile(string $file, string $password = null, array $additional_values = []): JWK
     {
         $values = KeyConverter::loadFromKeyFile($file, $password);
         $values = \array_merge($values, $additional_values);
@@ -279,7 +279,7 @@ class JWKFactory
      *
      * @throws \Exception
      */
-    public static function createFromKey(string $key, ?string $password = null, array $additional_values = []): JWK
+    public static function createFromKey(string $key, string $password = null, array $additional_values = []): JWK
     {
         $values = KeyConverter::loadFromKey($key, $password);
         $values = \array_merge($values, $additional_values);

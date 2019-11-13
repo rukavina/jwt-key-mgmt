@@ -84,7 +84,7 @@ class KeyConverter
     /**
      * @throws \Exception
      */
-    public static function loadFromKeyFile(string $file, ?string $password = null): array
+    public static function loadFromKeyFile(string $file, string $password = null): array
     {
         $content = \file_get_contents($file);
 
@@ -94,7 +94,7 @@ class KeyConverter
     /**
      * @throws \Exception
      */
-    public static function loadFromKey(string $key, ?string $password = null): array
+    public static function loadFromKey(string $key, string $password = null): array
     {
         try {
             return self::loadKeyFromDER($key, $password);
@@ -106,7 +106,7 @@ class KeyConverter
     /**
      * @throws \Exception
      */
-    private static function loadKeyFromDER(string $der, ?string $password = null): array
+    private static function loadKeyFromDER(string $der, string $password = null): array
     {
         $pem = self::convertDerToPem($der);
 
@@ -116,7 +116,7 @@ class KeyConverter
     /**
      * @throws \Exception
      */
-    private static function loadKeyFromPEM(string $pem, ?string $password = null): array
+    private static function loadKeyFromPEM(string $pem, string $password = null): array
     {
         if (\preg_match('#DEK-Info: (.+),(.+)#', $pem, $matches)) {
             $pem = self::decodePem($pem, $matches, $password);
@@ -216,7 +216,7 @@ class KeyConverter
     /**
      * @param string[] $matches
      */
-    private static function decodePem(string $pem, array $matches, ?string $password = null): string
+    private static function decodePem(string $pem, array $matches, string $password = null): string
     {
         if (null === $password) {
             throw new \InvalidArgumentException('Password required for encrypted keys.');
