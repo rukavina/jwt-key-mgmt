@@ -19,6 +19,16 @@
             "Jose\\Component\\KeyManagement\\":  ""
         }
     },
+    "repositories": [
+        {
+            "type":"vcs",
+            "url":"https://github.com/rukavina/jwt-core"
+        },
+        {
+            "type":"vcs",
+            "url":"https://github.com/rukavina/jwt-util-ecc"
+        }
+    ],
     "require": {
         "lib-openssl": "*",
         "paragonie/sodium_compat": "^1.2",
